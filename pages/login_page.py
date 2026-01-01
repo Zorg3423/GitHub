@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class LoginPage(BasePage):
-    LOGIN_URL = "/ru/accounts/login/"
+    LOGIN_URL = "/accounts/login/"
     ### ----- Форма авторизации ----- ###
     EMAIL_lOGIN = (By.XPATH, "//input[@name='login-username']")
     PASSWORD_lOGIN = (By.XPATH, "//input[@name='login-password']")
@@ -27,13 +27,20 @@ class LoginPage(BasePage):
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
-        self.is_element_present(*self.EMAIL_lOGIN)
-        self.is_element_present(*self.PASSWORD_lOGIN)
-        self.is_element_present(*self.BUTTON_LOGIN)
+        assert self.is_element_present(
+            *self.EMAIL_lOGIN), "Email is not presented"
+        assert self.is_element_present(
+            *self.PASSWORD_lOGIN), "Password is not presented"
+        assert self.is_element_present(
+            *self.BUTTON_LOGIN), "Button is not presented"
 
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
-        self.is_element_present(*self.EMAIL_REGESTRATION)
-        self.is_element_present(*self.PASSWORD_REGESTRATION)
-        self.is_element_present(*self.CONFIRM_PASSWORD_REGESTRATION)
-        self.is_element_present(*self.BUTTON_REGESTRATION)
+        assert self.is_element_present(
+            *self.EMAIL_REGESTRATION), "Email regestration is not presented"
+        assert self.is_element_present(
+            *self.PASSWORD_REGESTRATION), "Password regestration is not presented"
+        assert self.is_element_present(
+            *self.CONFIRM_PASSWORD_REGESTRATION), "Confirm password is not presented"
+        assert self.is_element_present(
+            *self.BUTTON_REGESTRATION), "Button regestration is not presented"
