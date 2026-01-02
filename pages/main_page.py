@@ -1,6 +1,8 @@
+
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
 from .login_page import LoginPage
+# в начале файла
 
 
 class MainPage(BasePage):
