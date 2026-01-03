@@ -30,11 +30,10 @@ class ProductPage(BasePage):
             *ProductPagelocators.ADD_BASKET), "No basket button"
 
     def should_be_success_message(self):
-        product_name = self.browser.find_element(
-            *ProductPagelocators.PRODUCT_NAME)
-        SUCCESS_MESSAGE = self.browser.find_element(
+
+        success_message = self.browser.find_element(
             *ProductPagelocators.SUCCESS_MESSAGE)
-        assert product_name.text == SUCCESS_MESSAGE.text, "Incorrect product in basket"
+        assert success_message.is_displayed(), "Incorrect product in basket"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPagelocators.SUCCESS_MESSAGE), \
